@@ -20,6 +20,7 @@ gem 'exceptional', :require => 'exceptional'
 
 gem 'russian'
 
+gem 'twitter'
 
 group :test do
   gem 'rspec', '~> 2.4'

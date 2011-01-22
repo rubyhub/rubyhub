@@ -1,8 +1,12 @@
 .column
   %h2 Twitter
+  %ul
+    -@tweets.each do |tweet|
+      %li
+        =image_tag tweet.account.avatar_url
+        =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}"
+        =tweet.text
 .column
   %h2 Блоги
-.column
-  %h2 GitHub
 .column
   %h2 Вакансии

@@ -10,7 +10,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110122165056) do
+ActiveRecord::Schema.define(:version => 20110122201759) do
+
+  create_table "blog_posts", :force => true do |t|
+    t.integer  "blog_id"
+    t.string   "title"
+    t.text     "text"
+    t.string   "url"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.string   "rss"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_offers", :force => true do |t|
+    t.string   "title"
+    t.string   "employer"
+    t.text     "text"
+    t.string   "url"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -21,5 +49,23 @@ ActiveRecord::Schema.define(:version => 20110122165056) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "tweets", :force => true do |t|
+    t.string   "text"
+    t.datetime "published_at"
+    t.string   "twitterid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "account_id"
+  end
+
+  create_table "twitter_accounts", :force => true do |t|
+    t.string   "name"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "twitterid"
+    t.string   "avatar_url"
+  end
 
 end
