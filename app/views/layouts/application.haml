@@ -13,5 +13,11 @@
     =include_javascripts :common
     =csrf_meta_tag
   %body
-    #page
+    #header
+      %h1 
+        =image_tag 'logo.png', :alt => 'Rubyhub'
+        Rubyhub
+      %h2 Аггрегатор украинской руби-сферы
+    #content
       =yield
+    #footer
