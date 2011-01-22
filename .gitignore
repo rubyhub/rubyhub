@@ -1,0 +1,7 @@
+.bundle
+tmp/*
+tmp/**/*
+log/*
+config/database.yml
+public/stylesheets/*.css
+public/assets/*

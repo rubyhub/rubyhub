@@ -1,0 +1,17 @@
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf8'}
+    =include_stylesheets :screen, :media => 'screen, projection'
+    =include_stylesheets :print, :media => 'print'
+    /[if IE]
+      =include_stylesheets :ie, :media => 'screen, projection'
+    /[if IE 6]
+      =include_stylesheets :ie6, :media => 'screen, projection'
+
+    =display_meta_tags :site => 'Rubyhub', :separator => '—', :reverse => true
+
+    =include_javascripts :common
+    =csrf_meta_tag
+  %body
+    #page
+      =yield

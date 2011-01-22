@@ -1,0 +1,22 @@
+package_assets: on
+embed_assets: off
+compress_assets: on
+gzip_assets: on
+javascript_compressor: yui
+
+javascripts:
+  common:
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/rails.js
+    - public/javascripts/application.js
+
+stylesheets:
+  screen:
+    - public/stylesheets/screen.css
+  print:
+    - public/stylesheets/print.css
+  ie:
+    - public/stylesheets/ie.css
+  ie6:
+    - public/stylesheets/ie6.css
+
