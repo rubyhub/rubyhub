@@ -6,6 +6,9 @@ set :rvm_ruby_string, 'ree-1.8.7-2010.02@rubyhub'
 # Bundler
 require 'bundler/capistrano'
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 set :user, 'leonid'
 set :application, 'rubyhub'
 set :deploy_to, '/home/leonid/www/rubyhub'

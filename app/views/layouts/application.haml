@@ -12,17 +12,22 @@
 
     =include_javascripts :common
 
-    =link{:rel => 'Shortcut Icon', :href => '/favicon.ico'}
+    %link{:rel => 'Shortcut Icon', :href => '/favicon.ico'}
 
     =csrf_meta_tag
   %body
-    #header
-      %h1 
-        =image_tag 'logo.png', :alt => 'Rubyhub'
-        Rubyhub
-      %h2 Аггрегатор украинской руби-сферы
-    #content
-      =yield
+    #root
+      #header
+        %h1 
+          =image_tag 'logo.png', :alt => 'Rubyhub'
+          Rubyhub
+        %h2 Аггрегатор украинской руби-сферы
+      #content
+        =yield
+      #root_footer
     #footer
+      \&copy;
+      2011
+      =link_to 'Леонид Шевцов', 'http://leonid.shevtsov.me/ru', :target => :blank
     -if Rails.env.production?
       =render 'html_assets/google_analytics'

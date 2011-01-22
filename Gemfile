@@ -17,18 +17,14 @@ gem 'enumerated_attribute'
 gem 'formtastic'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'exceptional', :require => 'exceptional'
-
 gem 'russian'
-
 gem 'twitter'
+gem 'whenever'
 
 group :test do
   gem 'rspec', '~> 2.4'
   gem 'rspec-rails'
-
-  
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'capybara'
-  
 end
