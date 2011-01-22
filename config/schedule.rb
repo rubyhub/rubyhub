@@ -23,4 +23,5 @@ job_type :runner, "cd :path && vendor/cronic ruby script/runner -e :environment 
 
 every 1.hour do
   rake 'twitter:collect_tweets'
+  rake 'blogs:update'
 end
