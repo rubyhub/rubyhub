@@ -17,8 +17,9 @@ namespace :blogs do
         blog.save!
       end
       rss = Nokogiri::XML(res.body)
-      if blog.title.blank?
-        blog.title = rss.css('channel > title').text
+      if blog.title.blank? || blog.url.blank?
+        blog.title = rss.css('channel > title').text.strip
+        blog.url = rss.css('channel > link').text.strip
         blog.save!
       end
 

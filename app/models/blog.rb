@@ -10,4 +10,9 @@ class Blog < ActiveRecord::Base
   named_scope :active, where(:status => :active)
 
   attr_protected :status, :title
+
+  def favicon_url
+    host = URI.parse(url).host rescue nil
+    "http://www.google.com/s2/favicons?domain=#{host}"
+  end
 end

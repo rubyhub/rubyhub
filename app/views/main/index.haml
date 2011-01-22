@@ -22,6 +22,7 @@
   %ul
     -@blog_posts.each do |blog_post|
       %li
+        =image_tag blog_post.blog.favicon_url, :size => '16x16'
         =link_to blog_post.title, blog_post.url
         =blog_post.blog.title
         =l blog_post.published_at, :format => :long

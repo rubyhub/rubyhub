@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-    @tweets = Tweet.limit(20)
-    @blog_posts = BlogPost.limit(20)
+    @tweets = Tweet.mainpage
+    @blog_posts = BlogPost.mainpage
   end
 end
