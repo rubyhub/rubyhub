@@ -1,5 +1,10 @@
 .column
   %h2 Twitter
+  =semantic_form_for TwitterAccount.new do |f|
+    =f.inputs do
+      =f.input :name, :label => 'Аккаунт'
+    =f.buttons do
+      =f.commit_button 'Добавить'
   %ul
     -@tweets.each do |tweet|
       %li

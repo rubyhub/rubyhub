@@ -1,5 +1,6 @@
 Rubyhub::Application.routes.draw do
   root :to => "main#index"
+  resources :twitter_accounts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

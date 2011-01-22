@@ -8,11 +8,13 @@ javascripts:
   common:
     - public/javascripts/vendor/jquery.js
     - public/javascripts/vendor/rails.js
+    - public/javascripts/unobtrusive_flash.js
     - public/javascripts/application.js
 
 stylesheets:
   screen:
     - public/stylesheets/screen.css
+    - public/stylesheets/unobtrusive_flash.css
   print:
     - public/stylesheets/print.css
   ie:
