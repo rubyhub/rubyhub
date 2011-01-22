@@ -11,7 +11,18 @@
         =image_tag tweet.account.avatar_url
         =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}"
         =tweet.text
+        =l tweet.published_at, :format => :long
 .column
   %h2 Блоги
+  =semantic_form_for Blog.new do |f|
+    =f.inputs do
+      =f.input :rss, :label => 'RSS блога'
+    =f.buttons do
+      =f.commit_button 'Добавить'
+  %ul
+    -@blog_posts.each do |blog_post|
+      %li
+        =link_to blog_post.title, blog_post.url
+        =l blog_post.published_at, :format => :long
 .column
   %h2 Вакансии

@@ -195,6 +195,7 @@ DEPENDENCIES
   jammit
   meta-tags
   mysql2
+  nokogiri
   rails (>= 3)
   rspec (~> 2.4)
   rspec-rails

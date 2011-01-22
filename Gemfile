@@ -21,6 +21,7 @@ gem 'russian'
 gem 'twitter'
 gem 'whenever'
 gem 'unobtrusive_flash'
+gem 'nokogiri'
 
 group :test do
   gem 'rspec', '~> 2.4'
