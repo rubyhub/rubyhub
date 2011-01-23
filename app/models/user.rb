@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  belongs_to :city, :counter_cache => true
+  belongs_to :city
   has_many :blogs
   has_many :twitter_accounts
 
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_protected :provider, :uid
 
-  after_save :update_counter_cache
+  after_save :clear_cities_cache
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -18,13 +18,8 @@ class User < ActiveRecord::Base
     end
   end
 
-private
-  def update_counter_cache
-    if city_id_changed?
-      [city_id_was, city_id].compact.each do |id|
-        c=City.find(id)
-        c.update_attributes!(:users_count => c.users.count)
-      end
-    end
+protected
+  def clear_cities_cache
+    Rails.cache.delete(:cities_for_map) if city_id_changed?
   end
 end
