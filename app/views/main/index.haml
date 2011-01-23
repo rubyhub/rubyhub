@@ -2,32 +2,40 @@
 #map
 
 .column
-  %h2 Twitter
-  =semantic_form_for TwitterAccount.new do |f|
-    =f.inputs do
-      =f.input :name, :label => 'Аккаунт'
-    =f.buttons do
-      =f.commit_button 'Добавить'
-  %ul
-    -@tweets.each do |tweet|
-      %li
-        =image_tag tweet.account.avatar_url
-        =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}", :target => :blank
-        =auto_link tweet.text, :html => {:target => :blank}
-        =l tweet.published_at, :format => :long
+  .column-insides
+    %h2 Twitter
+    =semantic_form_for TwitterAccount.new do |f|
+      =f.inputs do
+        =f.input :name, :label => 'Аккаунт'
+      =f.buttons do
+        =f.commit_button 'Добавить'
+    %ul
+      -@tweets.each do |tweet|
+        %li.tweet
+          =image_tag tweet.account.avatar_url, :class => 'avatar', :size => '48x48'
+          .text
+            =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}", :target => :blank, :class => :author
+            =auto_link tweet.text, :html => {:target => :blank}
+          .time=l tweet.published_at, :format => :long
+          .clear
 .column
-  %h2 Блоги
-  =semantic_form_for Blog.new do |f|
-    =f.inputs do
-      =f.input :rss, :label => 'RSS блога'
-    =f.buttons do
-      =f.commit_button 'Добавить'
-  %ul
-    -@blog_posts.each do |blog_post|
-      %li
-        =image_tag blog_post.blog.favicon_url, :size => '16x16'
-        =link_to blog_post.title, blog_post.url
-        =blog_post.blog.title
-        =l blog_post.published_at, :format => :long
+  .column-insides
+    %h2 Блоги
+    =semantic_form_for Blog.new do |f|
+      =f.inputs do
+        =f.input :rss, :label => 'RSS блога'
+      =f.buttons do
+        =f.commit_button 'Добавить'
+    %ul
+      -@blog_posts.each do |blog_post|
+        %li.blog_post
+          =link_to blog_post.url do
+            =image_tag blog_post.blog.favicon_url, :size => '16x16', :class => 'favicon'
+            =blog_post.title
+          .details
+            =blog_post.blog.title
+            =l blog_post.published_at, :format => :long
+          .clear
 .column
-  %h2 Вакансии
+  .column-insides
+    %h2 Вакансии

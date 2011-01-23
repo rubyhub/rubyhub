@@ -7,11 +7,52 @@
     float: left;
     width: 33%;
 
-    h2 {
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 2em;
-      margin-bottom: .75em;
+    .column-insides {
+      padding: 0 1em 0 1em;
+
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 2em;
+        margin-bottom: .75em;
+      }
+
+      li.tweet {
+        margin-bottom: 1.5em;
+        img.avatar {
+          float: left;
+          margin-right: 8px;
+          border: solid 1px #777;
+        }
+        a.author {
+          text-decoration: none;
+        }
+        .time {
+          text-align: right;
+          font-size: .8em;
+          line-height: 1.875em;
+          color: #777;
+        }
+      }
+
+      li.blog_post {
+        margin-bottom: 1.5em;
+        a {
+          text-decoration: none;
+          font-size: 1.2em;
+          line-height: 1.25em;
+        }
+        img.favicon {
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+        .details {
+          text-align: right;
+          font-size: .8em;
+          line-height: 1.875em;
+          color: #777;
+        }
+      }
     }
   }
 }
