@@ -1,6 +1,8 @@
 class TwitterAccount < ActiveRecord::Base
-  enum_attr :status, %w(^pending active disabled invalid)
+  belongs_to :user
   has_many :tweets, :foreign_key => :account_id
+
+  enum_attr :status, %w(^pending active disabled invalid)
 
   validates_presence_of :name
   validates_format_of :name, :with => /^[a-z0-9_]+$/

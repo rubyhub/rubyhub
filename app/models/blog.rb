@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
   enum_attr :status, %w(^pending active invalid)
 
+  belongs_to :user
   has_many :blog_posts
 
   validates_presence_of :rss

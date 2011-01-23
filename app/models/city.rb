@@ -3,4 +3,6 @@ class City < ActiveRecord::Base
 
   validates :title, :presence => true
   validates_uniqueness_of :title, :scope => :region_id
+
+  default_scope order('title ASC')
 end
