@@ -3,6 +3,10 @@ Rubyhub::Application.routes.draw do
   resources :twitter_accounts
   resources :blogs
 
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure" => 'sessions#failure'
+  match "/signout" => "sessions#destroy", :as => :signout
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

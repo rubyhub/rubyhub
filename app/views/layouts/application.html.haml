@@ -21,6 +21,14 @@
   %body
     =render 'html_assets/github'
     #root
+      #user_box
+        -if current_user
+          =image_tag("providers/#{current_user.provider}.png", :size => '16x16')
+          =current_user.name
+          =link_to 'Выйти', signout_path
+        -else
+          Вход
+          =link_to image_tag('providers/open_id.png',:alt=>'OpenID', :size => '16x16'), '/auth/open_id'
       #header
         %h1 
           =image_tag 'logo.png', :alt => 'Rubyhub'
