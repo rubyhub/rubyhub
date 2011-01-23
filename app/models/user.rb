@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_protected :provider, :uid
 
-  after_update :update_counter_cache
+  after_save :update_counter_cache
 
   def self.create_with_omniauth(auth)
     create! do |user|
