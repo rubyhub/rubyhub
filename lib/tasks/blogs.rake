@@ -17,23 +17,14 @@ namespace :blogs do
         blog.save!
       end
       rss = Nokogiri::XML.parse(res.body,nil, 'UTF-8')
-      if blog.title.blank? || blog.url.blank?
-        blog.title = rss.css('channel > title').text.strip
-        blog.url = rss.css('channel > link').text.strip
-        blog.save!
-      end
+
+      blog.title = rss.css('channel > title').text.strip
+      blog.url = rss.css('channel > link').text.strip
+      blog.save!
 
       # create missing posts
       rss.css('channel item').each do |item|
-        attrs = {
-          :url => item.css('link').text.strip,
-          :published_at => Time.zone.parse(item.css('pubDate').text.strip),
-          :title => item.css('title').text.strip,
-          :text => item.css('description').text.strip
-        }
-        unless blog.blog_posts.exists?(:url => attrs[:url])
-          blog.blog_posts.create!(attrs)
-        end
+        BlogPost.from_rss_item(blog, item)
       end
     end
   end

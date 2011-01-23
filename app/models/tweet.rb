@@ -16,5 +16,6 @@ protected
   def check_if_interesting
     test_text = text.mb_chars.downcase
     self.interesting = Tweet.filter_words.find_index{|word| test_text.include? word}!=nil
+    return true
   end
 end

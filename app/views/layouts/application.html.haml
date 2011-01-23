@@ -8,7 +8,10 @@
     /[if IE 6]
       =include_stylesheets :ie6, :media => 'screen, projection'
 
-    =display_meta_tags :site => 'Rubyhub', :separator => '—', :reverse => true
+    -if params[:controller]=='main'
+      =display_meta_tags :title => 'Rubyhub — агрегатор украинской руби-сферы', :reverse => true
+    -else
+      =display_meta_tags :site => 'Rubyhub', :separator => '—', :reverse => true
 
     =include_javascripts :common
 

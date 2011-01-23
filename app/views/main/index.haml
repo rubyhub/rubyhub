@@ -9,8 +9,8 @@
     -@tweets.each do |tweet|
       %li
         =image_tag tweet.account.avatar_url
-        =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}"
-        =tweet.text
+        =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}", :target => :blank
+        =auto_link tweet.text, :html => {:target => :blank}
         =l tweet.published_at, :format => :long
 .column
   %h2 Блоги
