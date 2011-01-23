@@ -52,11 +52,11 @@ class TwitterClient
   end
 
   def get_tweets
-    if since_id = Tweet.find(:first, :order => 'created_at DESC').try(:twitterid)
-      tweets = Twitter.friends_timeline(:count => 200, :since_id => since_id)
-    else
+#    if since_id = Tweet.find(:first, :order => 'created_at DESC').try(:twitterid)
+#      tweets = Twitter.friends_timeline(:count => 200, :since_id => since_id)
+#    else
       tweets = Twitter.friends_timeline(:count => 200)
-    end
+#    end
     
     tweets.each do |tweet|
       next if Tweet.exists?(:twitterid => tweet[:id])
