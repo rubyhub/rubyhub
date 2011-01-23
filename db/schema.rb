@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110123200430) do
+ActiveRecord::Schema.define(:version => 20110123215313) do
 
   create_table "blog_posts", :force => true do |t|
     t.integer  "blog_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110123200430) do
     t.float   "lat"
     t.float   "lon"
     t.string  "title"
+    t.integer "users_count", :default => 0
   end
 
   create_table "job_offers", :force => true do |t|

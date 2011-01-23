@@ -8,6 +8,7 @@ javascripts:
   common:
     - public/javascripts/vendor/jquery.js
     - public/javascripts/vendor/rails.js
+    - public/javascripts/vendor/raphael.js
     - public/javascripts/unobtrusive_flash.js
     - public/javascripts/application.js
 
