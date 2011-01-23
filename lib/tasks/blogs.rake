@@ -16,7 +16,7 @@ namespace :blogs do
         blog.status = :invalid
         blog.save!
       end
-      rss = Nokogiri::XML(res.body)
+      rss = Nokogiri::XML.parse(res.body,nil, 'UTF-8')
       if blog.title.blank? || blog.url.blank?
         blog.title = rss.css('channel > title').text.strip
         blog.url = rss.css('channel > link').text.strip

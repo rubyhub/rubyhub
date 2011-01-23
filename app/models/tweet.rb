@@ -14,6 +14,7 @@ class Tweet < ActiveRecord::Base
 
 protected
   def check_if_interesting
-    self.interesting = Tweet.filter_words.find_index{|word| self.text.include? word}!=nil
+    test_text = text.mb_chars.downcase
+    self.interesting = Tweet.filter_words.find_index{|word| test_text.include? word}!=nil
   end
 end

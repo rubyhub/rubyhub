@@ -5,4 +5,5 @@ haml
 erb
 github
 bundler
-
+rspec
+sass
