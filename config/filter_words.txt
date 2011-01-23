@@ -1,0 +1,8 @@
+ruby
+rails
+gem
+haml
+erb
+github
+bundler
+
