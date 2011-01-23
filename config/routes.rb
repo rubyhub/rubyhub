@@ -2,6 +2,7 @@ Rubyhub::Application.routes.draw do
   root :to => "main#index"
   resources :twitter_accounts
   resources :blogs
+  resources :users
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => 'sessions#failure'

@@ -1,0 +1,8 @@
+%h2 Редактирование профиля
+
+=semantic_form_for @user do |f|
+  =f.inputs do
+    =f.input :name
+    =f.input :email
+  =f.buttons do
+    =f.commit_button 'Сохранить'

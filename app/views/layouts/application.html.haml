@@ -25,6 +25,7 @@
         -if current_user
           =image_tag("providers/#{current_user.provider}.png", :size => '16x16')
           =current_user.name
+          =link_to 'Профиль', edit_user_path(current_user)
           =link_to 'Выйти', signout_path
         -else
           Вход
