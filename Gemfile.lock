@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/yaroslav/russian.git
+  revision: 576bc58914ed18402005338a345f29303bd0fe95
+  specs:
+    russian (0.2.7)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -193,7 +199,6 @@ GEM
       ruby-openid (>= 2.1.7)
     rubyntlm (0.1.1)
     rubyzip (0.9.4)
-    russian (0.2.7)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
       ffi (~> 0.6.3)
@@ -244,7 +249,7 @@ DEPENDENCIES
   rails (>= 3)
   rspec (~> 2.4)
   rspec-rails
-  russian
+  russian!
   twitter
   unobtrusive_flash
   whenever

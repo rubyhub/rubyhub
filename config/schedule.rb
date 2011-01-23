@@ -21,7 +21,10 @@
 job_type :rake, "cd :path && vendor/cronic rake :task :output RAILS_ENV=:environment"
 job_type :runner, "cd :path && vendor/cronic ruby script/runner -e :environment :task :output"
 
-every 1.hour do
+every 5.minutes do
   rake 'twitter:collect_tweets'
+end
+
+every 1.hour do
   rake 'blogs:update'
 end

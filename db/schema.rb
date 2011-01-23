@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110123144652) do
+ActiveRecord::Schema.define(:version => 20110123175449) do
 
   create_table "blog_posts", :force => true do |t|
     t.integer  "blog_id"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20110123144652) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.integer  "user_id"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.integer "region_id"
+    t.float   "lat"
+    t.float   "lon"
+    t.string  "title"
   end
 
   create_table "job_offers", :force => true do |t|
@@ -40,6 +48,10 @@ ActiveRecord::Schema.define(:version => 20110123144652) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.string "title"
   end
 
   create_table "sessions", :force => true do |t|
@@ -69,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20110123144652) do
     t.datetime "updated_at"
     t.string   "twitterid"
     t.string   "avatar_url"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
