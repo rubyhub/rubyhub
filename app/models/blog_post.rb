@@ -17,5 +17,6 @@ protected
     d=Nokogiri::HTML::Document.parse('',nil,'UTF-8')
     test_text = self.title+' '+CGI::unescapeHTML(Nokogiri::HTML::DocumentFragment.new(d, self.text).text).mb_chars.downcase
     self.interesting = Tweet.filter_words.find_index{|word| test_text.include? word}!=nil
+    return true
   end
 end
