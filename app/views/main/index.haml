@@ -33,7 +33,7 @@
             =image_tag blog_post.blog.favicon_url, :size => '16x16', :class => 'favicon'
             =blog_post.title
           .details
-            =blog_post.blog.title
+            =blog_post.blog.title+','
             =l blog_post.published_at, :format => :long
           .clear
 .column
