@@ -6,7 +6,7 @@ $(function() {
 
     $.each(cities.cities, function(i, city) {
       if (city.size==0) {
-        $(paper.circle(50+city.x, 50+city.y, 1).attr({fill: '#aaa', stroke: '#aaa'}).node).attr('title', city.title);
+        $(paper.circle(50+city.x, 50+city.y, 1).attr({fill: '#777', stroke: '#777'}).node).attr('title', city.title);
       } else {
         $(paper.circle(50+city.x, 50+city.y, city.size).attr({fill: '#7d0000', stroke: '#7d0000'}).node).attr('title', city.title);
       }
