@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
 
+  def map
+    @cities = City.for_map
+  end
+
   def edit
     @user = current_user
   end

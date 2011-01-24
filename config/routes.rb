@@ -8,6 +8,8 @@ Rubyhub::Application.routes.draw do
   match "/auth/failure" => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
 
+  get '/map', :to => 'users#map', :as => :map
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

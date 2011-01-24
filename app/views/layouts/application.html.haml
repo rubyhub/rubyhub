@@ -40,6 +40,12 @@
           =link_to image_tag('logo.png', :alt => 'Rubyhub'), root_url
           Rubyhub
         %h2 Агрегатор украинской руби-сферы
+        %ul#menu
+          %li=link_to_unless_current 'Пульс', root_url
+          %li &bull;
+          %li=link_to_unless_current 'Карта', map_url
+          %li &bull;
+          %li=link_to 'Блог', 'http://leonid.shevtsov.me/ru/tags/rubyhub', :target => :blank
       #content
         =yield
       #root_footer

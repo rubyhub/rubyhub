@@ -22,7 +22,7 @@ class City < ActiveRecord::Base
       max_size = cities.map(&:users_count).max
       width = max_lon-min_lon
       height = max_lat-min_lat
-      scale = 600/[width,height].max
+      scale = 900/[width,height].max
 
       {
         :width => (width*scale).to_i,
