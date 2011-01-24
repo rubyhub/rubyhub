@@ -36,9 +36,9 @@
         %li.job_offer
           .title
             =link_to job_offer.title, job_offer.url
-            -unless job_offer.salary.blank?
-              \&mdash;
-              =job_offer.salary
+          -unless job_offer.salary.blank? && job_offer.cities.empty?
+            .details
+              =[job_offer.cities.map(&:title).join(', '), job_offer.salary].reject(&:blank?).join(', ')
           .text=job_offer.text
           .time=l job_offer.published_on, :format => :long
     .jooble
