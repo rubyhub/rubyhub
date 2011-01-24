@@ -32,10 +32,11 @@
             %li
               =link_to 'Выйти', signout_path
         -else
-          Вход:
-          =link_to image_tag('providers/open_id.png', :alt=>'OpenID', :size => '16x16'), '/auth/open_id'
-          =link_to image_tag('providers/google.png', :alt=>'Google', :size => '16x16'), '/auth/google'
-          =link_to image_tag('providers/twitter.png', :alt=>'Twitter', :size => '16x16'), '/auth/twitter'
+          .login
+            Вход:
+            =link_to image_tag('providers/open_id.png', :alt=>'OpenID', :size => '16x16'), '/auth/open_id', :title => 'Войти по OpenID'
+            =link_to image_tag('providers/google.png', :alt=>'Google', :size => '16x16'), '/auth/google', :title => 'Войти учетной записью Google'
+            =link_to image_tag('providers/twitter.png', :alt=>'Twitter', :size => '16x16'), '/auth/twitter', :title => 'Войти учетной записью Twitter'
       #header
         %h1 
           =link_to image_tag('logo.png', :alt => 'Rubyhub'), root_url

@@ -15,6 +15,10 @@ body {
   @include border-bottom-right-radius(10px);
   @include box-shadow(#777);
 
+  .login {
+    a { margin: 0 4px}
+  }
+
   ul li {
     padding-left: 24px;
     line-height: 1.2em;

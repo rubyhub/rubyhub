@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :city
-  has_many :blogs
+  has_one :blog
   has_one :twitter_account
 
   #validates_presence_of :provider, :uid

@@ -1,6 +1,9 @@
 .column
   .column-insides
-    %h2 Twitter
+    -unless current_user.try(:twitter_account)
+      .add_link=link_to 'Добавить свой', '/auth/twitter'
+    %h2 
+      Twitter
     %ul
       -@tweets.each do |tweet|
         %li.tweet
@@ -14,6 +17,8 @@
           .clear
 .column
   .column-insides
+    -unless current_user.try(:blog)
+      .add_link=link_to 'Добавить свой', '#'
     %h2 Блоги
     %ul
       -@blog_posts.each do |blog_post|
