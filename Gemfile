@@ -23,6 +23,7 @@ gem 'whenever'
 gem 'unobtrusive_flash'
 gem 'nokogiri'
 gem 'omniauth'
+gem 'rails_db_dump'
 
 group :test do
   gem 'rspec', '~> 2.4'

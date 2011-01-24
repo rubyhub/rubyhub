@@ -173,6 +173,7 @@ GEM
       activesupport (= 3.0.3)
       bundler (~> 1.0)
       railties (= 3.0.3)
+    rails_db_dump (0.1.0)
     railties (3.0.3)
       actionpack (= 3.0.3)
       activesupport (= 3.0.3)
@@ -247,6 +248,7 @@ DEPENDENCIES
   nokogiri
   omniauth
   rails (>= 3)
+  rails_db_dump
   rspec (~> 2.4)
   rspec-rails
   russian!

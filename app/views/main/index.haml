@@ -44,5 +44,6 @@
     %ul
       -@job_offers.each do |job_offer|
         %li
-          =link_to job_offer.title, job_offer.url
+          %h3 =link_to job_offer.title, job_offer.url
           %div=job_offer.text
+          .time=l job_offer.published_on, :format => :long
