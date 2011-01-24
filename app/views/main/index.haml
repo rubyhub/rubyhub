@@ -34,7 +34,11 @@
     %ul
       -@job_offers.each do |job_offer|
         %li.job_offer
-          .title=link_to job_offer.title, job_offer.url
+          .title
+            =link_to job_offer.title, job_offer.url
+            -unless job_offer.salary.blank?
+              \&mdash;
+              =job_offer.salary
           .text=job_offer.text
           .time=l job_offer.published_on, :format => :long
     .jooble
