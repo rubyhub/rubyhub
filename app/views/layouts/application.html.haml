@@ -9,7 +9,8 @@
       =include_stylesheets :ie6, :media => 'screen, projection'
 
     -if params[:controller]=='main'
-      =display_meta_tags :title => 'Rubyhub — агрегатор украинской руби-сферы', :reverse => true
+      %title Rubyhub — агрегатор украинской руби-сферы
+      =display_meta_tags :reverse => true
     -else
       =display_meta_tags :site => 'Rubyhub', :separator => '—', :reverse => true
 

@@ -11,12 +11,13 @@
       или 
       =link_to 'отменить', root_url
 
-  %h2 Добавить твиттер
-  =semantic_form_for TwitterAccount.new do |f|
-    =f.inputs do
-      =f.input :name, :label => 'Аккаунт'
-    =f.buttons do
-      =f.commit_button 'Добавить'
+  %h2=Twitter
+  
+  %p
+    -if @user.twitter_account
+      =link_to '@'+@user.twitter_account.name, @user.twitter_account.url, :target => :blank
+    -else
+      =link_to 'Добавить', '/auth/twitter'
 
   %h2 Добавить блог
   =semantic_form_for Blog.new do |f|

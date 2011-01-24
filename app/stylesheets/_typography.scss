@@ -1,5 +1,5 @@
 $serif_font: Georgia, "Times New Roman", serif;
-$sans_font: Calibri, Segoe UI, Ubuntu, Myriad Pro, sans-serif;
+$sans_font: Calibri, Segoe UI, Ubuntu, Myriad Pro, Tahoma, sans-serif;
 
 body {
   font-family: $sans_font;
@@ -12,7 +12,7 @@ h1,h2,h3,h4,h5,h6 {
 
 h2 {
   font-size: 2em;
-  margin-bottom: 1.5em;
+  margin-bottom: .75em;
 }
 
 p {

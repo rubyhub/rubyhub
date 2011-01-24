@@ -4,7 +4,9 @@ Rubyhub::Application.routes.draw do
   resources :blogs
   resource :user
 
-  match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/twitter/callback" => "sessions#from_twitter"
+  match "/auth/open_id/callback" => "sessions#create"
+  match "/auth/google/callback" => "sessions#create"
   match "/auth/failure" => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
 

@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   belongs_to :city
   has_many :blogs
-  has_many :twitter_accounts
+  has_one :twitter_account
 
-  validates_presence_of :provider, :uid
+  #validates_presence_of :provider, :uid
 
   attr_protected :provider, :uid
 
