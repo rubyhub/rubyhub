@@ -2,7 +2,10 @@ Rubyhub::Application.routes.draw do
   root :to => "main#index"
   resources :twitter_accounts
   resources :blogs
-  resource :user
+  resource :user do
+    get :poll, :to => 'users#poll'
+    post :poll, :to => 'users#process_poll'
+  end
 
   match "/auth/twitter/callback" => "sessions#from_twitter"
   match "/auth/open_id/callback" => "sessions#create"

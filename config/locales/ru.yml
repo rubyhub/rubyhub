@@ -8,3 +8,29 @@ ru:
         email_hint: Никому не показывается, будет использоваться для нечастых уведомлений.
         city: Город
         city_hint: Для статистики и карты.
+        gender: Пол
+        birth_year: Год рождения
+        relation_to_ruby: Отношение к Ruby
+        os: Основная ОС для Ruby
+        editor: Ruby-редактор
+        tabs_or_spaces: Табы или пробелы?
+  formtastic:
+    enum:
+      user:
+        gender:
+          male: Мужской
+          female: Женский
+        relation_to_ruby:
+          fulltime: Работаю фулл-тайм
+          parttime: Работаю частично
+          hobbyist: Любитель
+          newbie: Только начал
+          interested: Посматриваю
+          ex: Бывший рубист
+          coworker: Сотрудничаю с рубистами (менеджер, тестер, верстальщик, дизайнер, ...)
+          employer: Заказчик рубистов
+          none: Никакого
+        tabs_or_spaces:
+          tabs: Табы
+          spaces: Пробелы
+

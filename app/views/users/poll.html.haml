@@ -1,0 +1,17 @@
+#edit_form
+  %h2=title 'Анкета'
+
+  %p Все поля &mdash; необязательные! Но &mdash; самые важные.
+
+  =semantic_form_for @user, :url => user_url do |f|
+    =f.inputs do
+      =f.input :gender, :as => :radio_enum, :translate => true
+      =f.input :birth_year
+      =f.input :relation_to_ruby, :as => :radio_enum, :collection => User::RELATIONS, :translate => true
+      =f.input :os, :as => :radio_enum, :collection => User::OSES, :include_other => true
+      =f.input :editor, :as => :radio_enum, :collection => User::EDITORS, :include_other => true
+      =f.input :tabs_or_spaces, :as => :radio_enum, :translate => true
+    =f.buttons do
+      =f.commit_button 'Послать'
+      или 
+      =link_to 'отменить', root_url

@@ -47,6 +47,8 @@
           %li &bull;
           %li=link_to_unless_current 'Карта', map_url
           %li &bull;
+          %li=link_to_unless_current 'Анкета', poll_user_url
+          %li &bull;
           %li=link_to 'Блог', 'http://leonid.shevtsov.me/ru/tags/rubyhub', :target => :blank
       #content
         =yield

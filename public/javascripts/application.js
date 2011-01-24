@@ -12,4 +12,25 @@ $(function() {
       }
     });
   }
+
+  $('li.radio_enum input[value=other]').each(function(i,obj) {
+    var $label = $(obj).closest('label');
+    var $other = $('<input type="text" name="" placeholder="Свой вариант">').attr('value', $label.find('span').text());
+    $other.click(function(e) {
+      obj.click();
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    $(obj).closest('li.radio_enum').find('input[type=radio]').click(function(e) {
+      if (!$(obj).attr('checked')) {
+        $other.attr('name', '');
+      } else {
+        $other.attr('name', $(obj).attr('name'));
+      }
+    });
+    $label.find('span').replaceWith($other);
+    if ($other.attr('value')!='') {
+      $(obj).click() 
+    }
+  });
 });

@@ -1,9 +1,10 @@
 #edit_form
   %h2 Редактирование профиля
 
-  %p Все поля - необязательные!
+  %p Все поля &mdash; необязательные!
 
   =semantic_form_for @user, :url => user_url do |f|
+
     =f.inputs do
       =f.input :name, :hint => t('activerecord.attributes.user.name_hint')
       =f.input :email, :hint => t('activerecord.attributes.user.email_hint')
@@ -13,21 +14,11 @@
       или 
       =link_to 'отменить', root_url
 
-  %h2=Twitter
+  %h2 Учетные записи на других сайтах
   
   %p
     -if @user.twitter_account
+      Twitter:
       =link_to '@'+@user.twitter_account.name, @user.twitter_account.url, :target => :blank
-      -if @user.twitter_account.status==:active
-        %em Показывается в "Пульсе"
-      -else
-        %em На проверке
     -else
       =link_to 'Добавить', '/auth/twitter'
-
-  %h2 Добавить блог
-  =semantic_form_for Blog.new do |f|
-    =f.inputs do
-      =f.input :rss, :label => 'RSS блога'
-    =f.buttons do
-      =f.commit_button 'Добавить'

@@ -5,6 +5,19 @@ class UsersController < ApplicationController
     @cities = City.for_map
   end
 
+  def poll
+    @user = current_user || User.new
+  end
+
+  def process_poll
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      redirect_to :root, :notice => 'Профиль сохранен'
+    else
+      render :action => 'edit'
+    end
+  end
+
   def edit
     @user = current_user
   end
