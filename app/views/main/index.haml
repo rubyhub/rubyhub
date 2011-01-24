@@ -37,3 +37,6 @@
           .title=link_to job_offer.title, job_offer.url
           .text=job_offer.text
           .time=l job_offer.published_on, :format => :long
+    .jooble
+      Вакансии предоставлены 
+      =link_to image_tag('jooble.png', :alt => 'Jooble'), 'http://jooble.com.ua', :target => :blank
