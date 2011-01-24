@@ -13,10 +13,10 @@ class JobOffer < ActiveRecord::Base
       :title => message.css('position').text.strip,
       :salary => message.css('salary').text.strip,
       :text => message.css('desc').text.strip,
-      :published_on => message.css('updated').strip.to_i.days.ago.to_date,
+      :published_on => message.css('updated').text.strip.to_i.days.ago.to_date,
       :urls => message.css('sources > source > url').map(&:text).map(&:strip).join("\n")
     }
-    cities = message.css('region').text.split(',').map{|r| City.find_by_title(r.strip)}
+    cities = message.css('region').text.split(',').map{|r| City.find_by_title(r.strip)}.compact
     job_offer = JobOffer.find_by_joobleid(attrs[:joobleid]) || JobOffer.new
 
     job_offer.update_attributes!(attrs)
@@ -26,6 +26,6 @@ class JobOffer < ActiveRecord::Base
   end
 
   def url
-    urls.split("\n").random_element
+    urls.split("\n").sample
   end
 end

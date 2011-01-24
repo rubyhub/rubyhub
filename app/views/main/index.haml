@@ -42,5 +42,5 @@
     %ul
       -@job_offers.each do |job_offer|
         %li
-          =link_to job_offer.title, job_offer.url
+          =link_to job_offer.title, job_offer.url, :target => :blank
           %div=job_offer.text

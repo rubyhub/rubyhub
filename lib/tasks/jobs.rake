@@ -9,7 +9,7 @@ namespace :jobs do
     request.body = xml
     response = Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
     
-    doc = Nokogiri::XML(request)
+    doc = Nokogiri::XML(response.body)
     doc.css('messages>msg').each do |message|
       JobOffer.from_jooble(message)
     end
