@@ -39,3 +39,8 @@
 .column
   .column-insides
     %h2 Вакансии
+    %ul
+      -@job_offers.each do |job_offer|
+        %li
+          =link_to job_offer.title, job_offer.url
+          %div=job_offer.text

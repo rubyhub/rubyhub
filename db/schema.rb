@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110123215313) do
+ActiveRecord::Schema.define(:version => 20110124102318) do
 
   create_table "blog_posts", :force => true do |t|
     t.integer  "blog_id"
@@ -41,14 +41,20 @@ ActiveRecord::Schema.define(:version => 20110123215313) do
     t.integer "users_count", :default => 0
   end
 
+  create_table "cities_job_offers", :id => false, :force => true do |t|
+    t.integer "city_id"
+    t.integer "job_offer_id"
+  end
+
   create_table "job_offers", :force => true do |t|
     t.string   "title"
-    t.string   "employer"
     t.text     "text"
-    t.string   "url"
-    t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "salary"
+    t.text     "urls"
+    t.string   "joobleid"
+    t.date     "published_on"
   end
 
   create_table "regions", :force => true do |t|
