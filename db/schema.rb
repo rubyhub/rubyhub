@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110124102318) do
+ActiveRecord::Schema.define(:version => 20110124142010) do
 
   create_table "blog_posts", :force => true do |t|
     t.integer  "blog_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20110124102318) do
     t.text     "urls"
     t.string   "joobleid"
     t.date     "published_on"
+    t.boolean  "interesting",  :default => false, :null => false
   end
 
   create_table "regions", :force => true do |t|

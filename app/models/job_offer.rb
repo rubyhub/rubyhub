@@ -5,7 +5,14 @@ class JobOffer < ActiveRecord::Base
   validates_presence_of :urls
   validates :joobleid, :presence => true, :uniqueness => true
       
-  named_scope :mainpage, order('published_on DESC').limit(20)
+  named_scope :interesting, where(:interesting => true)
+  named_scope :mainpage, interesting.order('published_on DESC').limit(20)
+  
+  before_create :check_if_interesting
+
+  def self.filter_words
+    %w(ruby rails)
+  end
 
   def self.from_jooble(message)
     attrs = {
@@ -27,5 +34,12 @@ class JobOffer < ActiveRecord::Base
 
   def url
     urls.split("\n").sample
+  end
+
+protected
+
+  def check_if_interesting
+    self.interesting = JobOffer.filter_words.find_index{|word| title.mb_chars.downcase.include? word}!=nil
+    return true
   end
 end

@@ -16,6 +16,13 @@
         font-size: 2em;
         margin-bottom: .75em;
       }
+        
+      .time {
+        text-align: right;
+        font-size: .8em;
+        line-height: 1.875em;
+        color: #777;
+      }
 
       li.tweet {
         line-height: 1.5em;
@@ -27,12 +34,6 @@
         }
         a.author {
           text-decoration: none;
-        }
-        .time {
-          text-align: right;
-          font-size: .8em;
-          line-height: 1.875em;
-          color: #777;
         }
       }
 
@@ -52,6 +53,17 @@
           font-size: .8em;
           line-height: 1.875em;
           color: #777;
+        }
+      }
+
+      li.job_offer {
+        margin-bottom: 1.5em;
+        line-height: 1.5em;
+
+        .title {
+          font-size: 1.2em;
+          line-height: 1.25em;
+          a {text-decoration: none}
         }
       }
     }

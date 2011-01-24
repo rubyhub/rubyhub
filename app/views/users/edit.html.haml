@@ -10,3 +10,17 @@
       =f.commit_button 'Сохранить'
       или 
       =link_to 'отменить', root_url
+
+  %h2 Добавить твиттер
+  =semantic_form_for TwitterAccount.new do |f|
+    =f.inputs do
+      =f.input :name, :label => 'Аккаунт'
+    =f.buttons do
+      =f.commit_button 'Добавить'
+
+  %h2 Добавить блог
+  =semantic_form_for Blog.new do |f|
+    =f.inputs do
+      =f.input :rss, :label => 'RSS блога'
+    =f.buttons do
+      =f.commit_button 'Добавить'

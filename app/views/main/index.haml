@@ -4,11 +4,6 @@
 .column
   .column-insides
     %h2 Twitter
-    =semantic_form_for TwitterAccount.new do |f|
-      =f.inputs do
-        =f.input :name, :label => 'Аккаунт'
-      =f.buttons do
-        =f.commit_button 'Добавить'
     %ul
       -@tweets.each do |tweet|
         %li.tweet
@@ -23,11 +18,6 @@
 .column
   .column-insides
     %h2 Блоги
-    =semantic_form_for Blog.new do |f|
-      =f.inputs do
-        =f.input :rss, :label => 'RSS блога'
-      =f.buttons do
-        =f.commit_button 'Добавить'
     %ul
       -@blog_posts.each do |blog_post|
         %li.blog_post
@@ -43,7 +33,7 @@
     %h2 Вакансии
     %ul
       -@job_offers.each do |job_offer|
-        %li
-          %h3 =link_to job_offer.title, job_offer.url
-          %div=job_offer.text
+        %li.job_offer
+          .title=link_to job_offer.title, job_offer.url
+          .text=job_offer.text
           .time=l job_offer.published_on, :format => :long
