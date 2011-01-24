@@ -1,11 +1,13 @@
 #edit_form
   %h2 Редактирование профиля
 
+  %p Все поля - необязательные!
+
   =semantic_form_for @user, :url => user_url do |f|
     =f.inputs do
-      =f.input :name
-      =f.input :email
-      =f.input :city
+      =f.input :name, :hint => t('activerecord.attributes.user.name_hint')
+      =f.input :email, :hint => t('activerecord.attributes.user.email_hint')
+      =f.input :city, :hint => t('activerecord.attributes.user.city_hint')
     =f.buttons do
       =f.commit_button 'Сохранить'
       или 
@@ -16,6 +18,10 @@
   %p
     -if @user.twitter_account
       =link_to '@'+@user.twitter_account.name, @user.twitter_account.url, :target => :blank
+      -if @user.twitter_account.status==:active
+        %em Показывается в "Пульсе"
+      -else
+        %em На проверке
     -else
       =link_to 'Добавить', '/auth/twitter'
 
