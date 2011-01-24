@@ -11,6 +11,9 @@ class Tweet < ActiveRecord::Base
     @filter_words || File.read(File.join(Rails.root, 'config', 'filter_words.txt')).split("\n").map(&:strip).reject(&:empty?)
   end
 
+  def url
+    account.url + "/statuses/" + twitterid
+  end
 
 protected
   def check_if_interesting

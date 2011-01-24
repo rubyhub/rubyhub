@@ -12,11 +12,13 @@
     %ul
       -@tweets.each do |tweet|
         %li.tweet
-          =image_tag tweet.account.avatar_url, :class => 'avatar', :size => '48x48'
+          =link_to image_tag(tweet.account.avatar_url, :class => 'avatar', :size => '48x48'), tweet.account.url
           .text
-            =link_to tweet.account.name, "http://twitter.com/#{tweet.account.name}", :target => :blank, :class => :author
+            =link_to tweet.account.name, tweet.account.url, :target => :blank, :class => :author
             =auto_link tweet.text, :html => {:target => :blank}
-          .time=l tweet.published_at, :format => :long
+          .time
+            =l(tweet.published_at, :format => :long)
+            =link_to '#', tweet.url, :target => :blank
           .clear
 .column
   .column-insides
@@ -42,5 +44,5 @@
     %ul
       -@job_offers.each do |job_offer|
         %li
-          =link_to job_offer.title, job_offer.url, :target => :blank
+          =link_to job_offer.title, job_offer.url
           %div=job_offer.text

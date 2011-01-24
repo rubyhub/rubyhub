@@ -11,4 +11,8 @@ class TwitterAccount < ActiveRecord::Base
   named_scope :active, where(:status => :active)
 
   attr_protected :twitterid, :avatar_url, :status
+
+  def url
+    "http://twitter.com/#{name}"
+  end
 end
