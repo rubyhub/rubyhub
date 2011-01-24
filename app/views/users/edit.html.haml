@@ -1,10 +1,12 @@
 #edit_form
   %h2 Редактирование профиля
 
-  =semantic_form_for @user do |f|
+  =semantic_form_for @user, :url => user_url do |f|
     =f.inputs do
       =f.input :name
       =f.input :email
       =f.input :city
     =f.buttons do
       =f.commit_button 'Сохранить'
+      или 
+      =link_to 'отменить', root_url

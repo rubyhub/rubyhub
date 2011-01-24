@@ -2,6 +2,27 @@
   position: absolute;
   left: 0;
   top: 0;
+
+  padding: 6px;
+  background-color: #e0e0e0;
+
+  @include border-bottom-right-radius(10px);
+  @include box-shadow(#777);
+
+  ul li {
+    padding-left: 24px;
+    line-height: 1.2em;
+
+    a {
+      text-decoration: none
+    }
+
+    &.name {
+      font-weight: bold;
+      padding-left: 0;
+      img {margin-right: 8px};
+    }
+  }
 }
 
 #header {
