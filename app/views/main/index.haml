@@ -18,7 +18,10 @@
 .column
   .column-insides
     -unless current_user.try(:blog)
-      .add_link=link_to 'Добавить свой', '#'
+      -if current_user
+        .add_link=link_to 'Добавить свой', edit_user_url
+      -else
+        .add_link=link_to 'Добавить свой', 'javascript:alert("Пока что для добавления блога нужно авторизоваться (в левом верхнем углу).")'
     %h2 Блоги
     %ul
       -@blog_posts.each do |blog_post|
