@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   enum_attr :tabs_or_spaces, %w(tabs spaces)
 
   #validates_presence_of :provider, :uid
-  validates :birth_year, :numericality => {:greater_than => 1900, :less_than => 2010}
+  validates :birth_year, :numericality => {:greater_than => 1900, :less_than => 2010, :allow_blank => true}
+  validates :heard_about_ruby_year, :numericality => {:greater_than => 1900, :less_than => 2010, :allow_blank => true}
+  validates :started_ruby_year, :numericality => {:greater_than => 1900, :less_than => 2010, :allow_blank => true}
 
   attr_protected :provider, :uid
 
@@ -25,6 +27,10 @@ class User < ActiveRecord::Base
       user.name = auth["user_info"]["name"]
       user.email = auth['user_info']['email']
     end
+  end
+
+  def authorised?
+    !provider.blank? || !twitter_account.blank?
   end
 
 protected

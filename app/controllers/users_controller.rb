@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   end
 
   def process_poll
-    @user = current_user
+    @user = current_user || User.new
     if @user.update_attributes(params[:user])
-      redirect_to :root, :notice => 'Профиль сохранен'
+      @new_user = session[:user_id].blank?
+      session[:user_id] ||= @user.id
     else
       render :action => 'poll'
     end

@@ -23,7 +23,7 @@
     =render 'html_assets/github'
     #root
       #user_box.css3
-        -if current_user
+        -if current_user && current_user.authorised?
           %ul
             %li.name
               =image_tag("providers/#{current_user.provider}.png", :size => '16x16')+current_user.name

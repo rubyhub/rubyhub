@@ -5,6 +5,7 @@ Rubyhub::Application.routes.draw do
   resource :user do
     get :poll, :to => 'users#poll'
     put :poll, :to => 'users#process_poll'
+    post :poll, :to => 'users#process_poll'
   end
 
   match "/auth/twitter/callback" => "sessions#from_twitter"
