@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110125180218) do
+ActiveRecord::Schema.define(:version => 20110125213358) do
 
   create_table "blog_posts", :force => true do |t|
     t.integer  "blog_id"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20110125180218) do
     t.string   "tabs_or_spaces"
     t.integer  "heard_about_ruby_year"
     t.integer  "started_ruby_year"
+    t.string   "url"
   end
 
 end
