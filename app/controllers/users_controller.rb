@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to :root, :notice => 'Профиль сохранен'
     else
-      render :action => 'edit'
+      render :action => 'poll'
     end
   end
 

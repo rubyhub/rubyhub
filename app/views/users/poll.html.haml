@@ -3,7 +3,7 @@
 
   %p Все поля &mdash; необязательные! Но &mdash; самые важные.
 
-  =semantic_form_for @user, :url => user_url do |f|
+  =semantic_form_for @user, :url => poll_user_url do |f|
     =f.inputs do
       =f.input :gender, :as => :radio_enum, :translate => true
       =f.input :birth_year

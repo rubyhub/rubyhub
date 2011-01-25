@@ -4,7 +4,7 @@ Rubyhub::Application.routes.draw do
   resources :blogs
   resource :user do
     get :poll, :to => 'users#poll'
-    post :poll, :to => 'users#process_poll'
+    put :poll, :to => 'users#process_poll'
   end
 
   match "/auth/twitter/callback" => "sessions#from_twitter"

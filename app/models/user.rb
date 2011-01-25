@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   enum_attr :tabs_or_spaces, %w(tabs spaces)
 
   #validates_presence_of :provider, :uid
+  validates :birth_year, :numericality => {:greater_than => 1900, :less_than => 2010}
 
   attr_protected :provider, :uid
 
