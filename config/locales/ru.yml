@@ -10,6 +10,8 @@ ru:
         city_hint: Для статистики и карты.
         gender: Пол
         birth_year: Год рождения
+        heard_about_ruby_year: Год, в котором услышал о Ruby
+        started_ruby_year: Год, в котором начал писать на Ruby
         relation_to_ruby: Отношение к Ruby
         os: Основная ОС для Ruby
         editor: Ruby-редактор

@@ -5,8 +5,11 @@
 
   =semantic_form_for @user, :url => poll_user_url do |f|
     =f.inputs do
+      =f.input :city
       =f.input :gender, :as => :radio_enum, :translate => true
       =f.input :birth_year
+      =f.input :heard_about_ruby_year
+      =f.input :started_ruby_year
       =f.input :relation_to_ruby, :as => :radio_enum, :collection => User::RELATIONS, :translate => true
       =f.input :os, :as => :radio_enum, :collection => User::OSES, :include_other => true
       =f.input :editor, :as => :radio_enum, :collection => User::EDITORS, :include_other => true
