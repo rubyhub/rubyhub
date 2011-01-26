@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     else
       # authenticating...
       if account.new_record?
-        user = User.create!(:provider => auth['provider'], :name => auth['user_info']['name'], :email => auth['user_info']['email'])
+        user = User.create!(:provider => auth['provider'], :name => auth['user_info']['name'], :email => auth['user_info']['email'], :ip => request.remote_ip, :useragent => request.user_agent)
         account.user = user
         account.save!
         redirect_to edit_user_url

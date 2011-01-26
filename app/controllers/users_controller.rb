@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def process_poll
     @user = current_user || User.new
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user].merge(:ip => request.remote_ip, :useragent => request.user_agent))
       @new_user = session[:user_id].blank?
       session[:user_id] ||= @user.id
     else
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user].merge(:ip => request.remote_ip, :useragent => request.user_agent))
       redirect_to :root, :notice => 'Профиль сохранен'
     else
       render :action => 'edit'
