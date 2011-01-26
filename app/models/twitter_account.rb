@@ -5,7 +5,7 @@ class TwitterAccount < ActiveRecord::Base
   enum_attr :status, %w(^pending active disabled invalid)
 
   validates_presence_of :name
-  validates_format_of :name, :with => /^[a-z0-9_]+$/
+  validates_format_of :name, :with => /^[A-Za-z0-9_]+$/
   validates_uniqueness_of :name
 
   named_scope :active, where(:status => :active)
