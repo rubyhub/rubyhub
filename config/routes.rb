@@ -1,4 +1,10 @@
 Rubyhub::Application.routes.draw do
+  get "blogs/index"
+
+  get "blogs/approve"
+
+  get "users/index"
+
   get "twitter_account/index"
 
   get "twitter_account/approve"
@@ -28,6 +34,8 @@ Rubyhub::Application.routes.draw do
         get :approve
       end
     end
+    resources :blogs
+    resources :users
   end
 
   # The priority is based upon order of creation:

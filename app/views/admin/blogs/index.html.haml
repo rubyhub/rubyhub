@@ -1,0 +1,15 @@
+%h2 Блоги
+
+%ul
+  -@blogs.each do |blog|
+    %li
+      =link_to blog.title, blog.url
+      =link_to blog.rss, blog.rss
+
+%h2 Новые 
+
+%ul
+  -@users_with_new_blogs.each do |user|
+    %li
+      =link_to user.url, user.url
+      =user.inspect
