@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
   enum_attr :tabs_or_spaces, %w(tabs spaces)
 
   #validates_presence_of :provider, :uid
-  validates :birth_year, :numericality => {:greater_than => 1900, :less_than => 2010, :allow_blank => true}
-  validates :heard_about_ruby_year, :numericality => {:greater_than => 1900, :less_than => 2010, :allow_blank => true}
-  validates :started_ruby_year, :numericality => {:greater_than => 1900, :less_than => 2010, :allow_blank => true}
+  validates :birth_year, :numericality => {:greater_than => 1900, :less_than_or_equal_to => Date.today.year, :allow_blank => true}
+  validates :heard_about_ruby_year, :numericality => {:greater_than => 1900, :less_than_or_equal_to => Date.today.year, :allow_blank => true}
+  validates :started_ruby_year, :numericality => {:greater_than => 1900, :less_than_or_equal_to => Date.today.year, :allow_blank => true}
   
   validates_format_of :url, :with => /^(http|https):\/\/[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true
 
