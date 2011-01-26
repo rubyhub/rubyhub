@@ -1,0 +1,10 @@
+%h2 Twitter accounts
+
+%ul
+  -@twitter_accounts.each do |account|
+    %li
+      =link_to account.name, account.url
+      -if account.status == :active
+        Active
+      -else
+        =link_to 'Approve', approve_admin_twitter_account_url(account)

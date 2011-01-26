@@ -1,4 +1,8 @@
 Rubyhub::Application.routes.draw do
+  get "twitter_account/index"
+
+  get "twitter_account/approve"
+
   root :to => "main#index"
   resources :twitter_accounts
   resources :blogs
@@ -17,6 +21,10 @@ Rubyhub::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
 
   get '/map', :to => 'users#map', :as => :map
+
+  namespace :admin do
+    resources :twitter_accounts
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

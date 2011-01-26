@@ -1,0 +1,2 @@
+module Admin::TwitterAccountHelper
+end
