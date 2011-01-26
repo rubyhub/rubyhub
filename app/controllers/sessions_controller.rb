@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         end
       else
         account.user = current_user
-        twitter_account.save!
+        account.save!
         flash[:notice] = "#{human_name}-аккаунт успешно добавлен."
       end
       redirect_to edit_user_url
