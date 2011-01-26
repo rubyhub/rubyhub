@@ -30,7 +30,7 @@ class TwitterClient
   end
 
   def sync_friends_with_accounts
-    friend_ids = Twitter.friend_ids[:ids]
+    friend_ids = Twitter.friend_ids[:ids].map(&:to_s)
     active_accounts = TwitterAccount.active
 
     # follow accounts that aren't on our friends list
