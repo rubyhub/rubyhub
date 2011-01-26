@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def with_related_model
     auth = request.env["omniauth.auth"]
 
-    human_name = auth['provider'].capitalize
+    human_name = auth['provider'].classify
     user_field = "#{auth['provider']}_account"
     model = user_field.classify.constantize
 
@@ -42,6 +42,10 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     if user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
       redirect_to root_url
+    elsif current_user
+      user = current_user
+      user.provider = auth['provider']
+      user.uid = auth['uid']
     else
       user = User.create_with_omniauth(auth)
       redirect_to edit_user_url

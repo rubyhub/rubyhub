@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one :blog
   has_one :twitter_account
   has_one :github_account
+  has_one :linked_in_account
 
   enum_attr :gender, %w{male female}
 

@@ -10,6 +10,7 @@ Rubyhub::Application.routes.draw do
 
   match "/auth/twitter/callback" => "sessions#with_related_model"
   match "/auth/github/callback" => "sessions#with_related_model"
+  match "/auth/linked_in/callback" => "sessions#with_related_model"
   match "/auth/open_id/callback" => "sessions#create"
   match "/auth/google/callback" => "sessions#create"
   match "/auth/failure" => 'sessions#failure'

@@ -30,3 +30,9 @@
         =link_to @user.github_account.name, @user.github_account.url, :target => :blank
       -else
         =link_to 'Добавить', '/auth/github'
+    %dt LinkedIn
+    %dd
+      -if @user.linked_in_account
+        =link_to @user.linked_in_account.url, @user.linked_in_account.url, :target => :blank
+      -else
+        =link_to 'Добавить', '/auth/github'
