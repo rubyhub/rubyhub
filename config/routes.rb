@@ -23,7 +23,11 @@ Rubyhub::Application.routes.draw do
   get '/map', :to => 'users#map', :as => :map
 
   namespace :admin do
-    resources :twitter_accounts
+    resources :twitter_accounts do
+      member do
+        get :approve
+      end
+    end
   end
 
   # The priority is based upon order of creation:
