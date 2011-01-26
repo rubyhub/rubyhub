@@ -1,5 +1,6 @@
 .column
   .column-insides
+    .left_link=link_to image_tag('providers/twitter.png', :size => '16x16', :alt => '')+' @rubyhub', 'http://twitter.com/rubyhub', :target => :blank
     -unless current_user.try(:twitter_account)
       .add_link=link_to 'Добавить свой', '/auth/twitter'
     %h2 
