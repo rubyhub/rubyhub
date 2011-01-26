@@ -33,7 +33,7 @@ namespace :deploy do
 
   desc "Make symlinks"
   task :update_symlinks do
-    ['database.yml', 'twitter.yml'].each do |filename|
+    ['database.yml', 'keys.yml'].each do |filename|
       run "ln -fs #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
     end
 
