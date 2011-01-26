@@ -3,7 +3,7 @@ require 'yaml'
 
 class TwitterClient
   def initialize
-    credentials = YAML::load_file("#{RAILS_ROOT}/config/twitter.yml").symbolize_keys!
+    credentials = YAML::load_file("#{RAILS_ROOT}/config/keys.yml")['twitter'].symbolize_keys!
     Twitter.configure do |config|
       config.consumer_key = credentials[:consumer_key]
       config.consumer_secret = credentials[:consumer_secret]
@@ -15,7 +15,7 @@ class TwitterClient
   def follow_account(twitter_account)
     begin
       user_info = Twitter.user(twitter_account.name)
-      twitter_account.twitterid = user_info.id
+      twitter_account.uid = user_info.id
       twitter_account.avatar_url = user_info.profile_image_url
       Twitter.friendship_create(user_info.id)
     rescue Twitter::NotFound
@@ -35,7 +35,7 @@ class TwitterClient
 
     # follow accounts that aren't on our friends list
     active_accounts.each do |account| 
-      if account.twitterid.blank? || !friend_ids.include?(account.twitterid)
+      if account.uid.blank? || !friend_ids.include?(account.uid)
         begin
           follow_account(account)
           account.save! 
@@ -46,7 +46,7 @@ class TwitterClient
     end
 
     # unfollow accounts that aren't in our active accounts
-    (friend_ids - active_accounts.map(&:twitterid)).each do |userid| 
+    (friend_ids - active_accounts.map(&:uid)).each do |userid| 
       Twitter.friendship_destroy(userid) 
     end
   end

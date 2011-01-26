@@ -8,7 +8,8 @@ Rubyhub::Application.routes.draw do
     post :poll, :to => 'users#process_poll'
   end
 
-  match "/auth/twitter/callback" => "sessions#from_twitter"
+  match "/auth/twitter/callback" => "sessions#with_related_model"
+  match "/auth/github/callback" => "sessions#with_related_model"
   match "/auth/open_id/callback" => "sessions#create"
   match "/auth/google/callback" => "sessions#create"
   match "/auth/failure" => 'sessions#failure'

@@ -17,9 +17,16 @@
 
   %h2 Учетные записи на других сайтах
   
-  %p
-    -if @user.twitter_account
-      Twitter:
-      =link_to '@'+@user.twitter_account.name, @user.twitter_account.url, :target => :blank
-    -else
-      =link_to 'Добавить', '/auth/twitter'
+  %dl
+    %dt Twitter
+    %dd
+      -if @user.twitter_account
+        =link_to '@'+@user.twitter_account.name, @user.twitter_account.url, :target => :blank
+      -else
+        =link_to 'Добавить', '/auth/twitter'
+    %dt GitHub
+    %dd
+      -if @user.github_account
+        =link_to @user.github_account.name, @user.github_account.url, :target => :blank
+      -else
+        =link_to 'Добавить', '/auth/github'

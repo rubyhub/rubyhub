@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110125213358) do
+ActiveRecord::Schema.define(:version => 20110126082412) do
 
   create_table "blog_posts", :force => true do |t|
     t.integer  "blog_id"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(:version => 20110125213358) do
   create_table "cities_job_offers", :id => false, :force => true do |t|
     t.integer "city_id"
     t.integer "job_offer_id"
+  end
+
+  create_table "github_accounts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_url"
   end
 
   create_table "job_offers", :force => true do |t|
@@ -87,7 +96,7 @@ ActiveRecord::Schema.define(:version => 20110125213358) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "twitterid"
+    t.string   "uid"
     t.string   "avatar_url"
     t.integer  "user_id"
   end

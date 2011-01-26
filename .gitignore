@@ -3,6 +3,6 @@ tmp/*
 tmp/**/*
 log/*
 config/database.yml
-config/twitter.yml
+config/keys.yml
 public/stylesheets/*.css
 public/assets/*
