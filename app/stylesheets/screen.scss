@@ -24,3 +24,10 @@
     line-height: 1.5em
   }
 }
+
+dl.accounts {
+  @include horizontal-list-container;
+
+  dt {@include horizontal-list-item}
+  dd {@include horizontal-list-item; padding-right: 30px}
+}

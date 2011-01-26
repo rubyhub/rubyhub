@@ -16,23 +16,32 @@
       =link_to 'отменить', root_url
 
   %h2 Учетные записи на других сайтах
-  
-  %dl
-    %dt Twitter
+
+  %p
+    Записи про руби из Твиттера будут транслироваться на главной. Когда-нибудь там же будут все репозитории с GitHub с Ruby-кодом. Агрегировать так агрегировать. :)
+
+  %dl.accounts
+    %dt 
+      =image_tag 'providers/twitter.png', :size => '16x16'
+      Twitter
     %dd
       -if @user.twitter_account
         =link_to '@'+@user.twitter_account.name, @user.twitter_account.url, :target => :blank
       -else
         =link_to 'Добавить', '/auth/twitter'
-    %dt GitHub
+    %dt 
+      =image_tag 'providers/github.png', :size => '16x16'
+      GitHub
     %dd
       -if @user.github_account
         =link_to @user.github_account.name, @user.github_account.url, :target => :blank
       -else
         =link_to 'Добавить', '/auth/github'
-    %dt LinkedIn
+    %dt 
+      =image_tag 'providers/linked_in.png', :size => '16x16'
+      LinkedIn
     %dd
       -if @user.linked_in_account
         =link_to @user.linked_in_account.url, @user.linked_in_account.url, :target => :blank
       -else
-        =link_to 'Добавить', '/auth/github'
+        =link_to 'Добавить', '/auth/linked_in'
