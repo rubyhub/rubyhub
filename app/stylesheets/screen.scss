@@ -27,6 +27,7 @@
 
 dl.accounts {
   @include horizontal-list-container;
+  line-height: 1.5em;
 
   dt {@include horizontal-list-item}
   dd {@include horizontal-list-item; padding-right: 30px}
