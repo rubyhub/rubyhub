@@ -8,3 +8,7 @@
       link_to(image_tag('providers/twitter.png', :alt=>'Twitter', :size => '16x16'), '/auth/twitter', :title => 'Войти учетной записью Twitter')+', '+ |
       link_to(image_tag('providers/github.png', :alt=>'GitHub', :size => '16x16'), '/auth/github', :title => 'Войти учетной записью GitHub')+', или '+ |
       link_to(image_tag('providers/linked_in.png', :alt=>'LinkedIn', :size => '16x16'), '/auth/linked_in', :title => 'Войти учетной записью LinkedIn')+'.' |
+  %p
+    Кроме этого, можно зайти на страницу
+    =link_to 'профиля', edit_user_url
+    и указать свои профили на Twitter, GitHub и LinkedIn.
