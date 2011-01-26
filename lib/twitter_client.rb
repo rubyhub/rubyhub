@@ -62,7 +62,10 @@ class TwitterClient
       next if Tweet.exists?(:twitterid => tweet[:id])
       account = TwitterAccount.find_by_name(tweet["user"]["screen_name"])
       next if account.nil?
-      account.tweets.create!(:published_at => Time.parse(tweet["created_at"]), :text => tweet["text"], :twitterid => tweet["id"])
+      tweet = account.tweets.create!(:published_at => Time.parse(tweet["created_at"]), :text => tweet["text"], :twitterid => tweet["id"])
+      if tweet.interesting?
+        Twitter.retweet(tweet.twitterid)
+      end
     end
   end
 
