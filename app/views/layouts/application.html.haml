@@ -61,5 +61,5 @@
       \&copy;
       2011
       =link_to 'Леонид Шевцов', 'http://leonid.shevtsov.me/ru', :target => :blank
-    -if Rails.env.production?
+    -if Rails.env.production? && !current_user.try(:admin)
       =render 'html_assets/google_analytics'
