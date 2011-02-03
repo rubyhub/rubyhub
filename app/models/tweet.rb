@@ -31,7 +31,7 @@ protected
     uri = URI.parse(url)
     response = nil
     Net::HTTP.start(uri.host, uri.port) do |http|
-      response = http.head(uri.path)
+      response = http.head(uri.path.blank? ? '/' : uri.path)
     end
     if response.code.to_s[0,1]=='3' # redirect
       return follow_redirects(response['location'], depth+1)
