@@ -11,7 +11,7 @@
           =link_to image_tag(tweet.account.avatar_url, :class => 'avatar', :size => '48x48'), tweet.account.url
           .text
             =link_to tweet.account.name, tweet.account.url, :target => :blank, :class => :author
-            =auto_link tweet.text, :html => {:target => :blank}
+            =tweet.html
           .time
             =l(tweet.published_at, :format => :long)
             =link_to '#', tweet.url, :target => :blank
