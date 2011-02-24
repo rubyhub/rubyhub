@@ -24,7 +24,7 @@ class TwitterClient
       if e.to_s =~ /is already on your list/
         # uhm, do nothing. User is already on the list
       else
-        raise e
+        twitter_account.status = :invalid
       end
     end
   end
@@ -36,12 +36,8 @@ class TwitterClient
     # follow accounts that aren't on our friends list
     active_accounts.each do |account| 
       if account.uid.blank? || !friend_ids.include?(account.uid)
-        begin
-          follow_account(account)
-          account.save! 
-        #rescue
-        #  account.update_attributes!(:status => :invalid)
-        end
+        follow_account(account)
+        account.save! 
       end
     end
 
