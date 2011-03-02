@@ -54,3 +54,6 @@ end
 after "deploy:update_code", "deploy:update_symlinks"
 after "deploy:update_code", "deploy:trust_rvmrc" 
 after "deploy:update_code", "deploy:jammit"
+
+        require 'config/boot'
+        require 'hoptoad_notifier/capistrano'
