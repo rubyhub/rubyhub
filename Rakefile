@@ -4,4 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
+require 'hoptoad_rake_handler'
+
 Rubyhub::Application.load_tasks
