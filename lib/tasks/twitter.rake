@@ -14,6 +14,7 @@ namespace :twitter do
   task :check_if_interesting => :environment do
     Tweet.find_each do |tweet|
       tweet.send(:check_if_interesting)
+      tweet.send(:parse_text)
       tweet.save!
     end
   end

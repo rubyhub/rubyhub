@@ -29,8 +29,8 @@ protected
   end
 
   def parse_text
-    escaped_text = CGI.escapeHTML(text.gsub('&lt;','<').gsub('&gt;','>'))
     if self.interesting?
+      escaped_text = CGI.escapeHTML(text.gsub('&lt;','<').gsub('&gt;','>'))
       self.html = escaped_text.gsub(ActionView::Helpers::TextHelper::AUTO_LINK_RE) do
         url = $&
         final_url = HttpHelper.expand_url(url)
@@ -41,9 +41,9 @@ protected
         end
         "<a href=\"#{CGI.escapeHTML(final_url)}\" target=\"_blank\">#{CGI.escapeHTML(host)}»</a>"
       end
-      return true
     else
       self.html=CGI.escapeHTML(self.text)
     end
+    return true
   end
 end
