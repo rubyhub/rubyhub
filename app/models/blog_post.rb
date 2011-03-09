@@ -41,8 +41,12 @@ class BlogPost < ActiveRecord::Base
       query.delete('utm_medium')
       query.delete('utm_campaign')
       uri.query = query.empty? ? nil : query.map do |name,values|
-        values.map do |value|
-          "#{CGI.escape name}=#{CGI.escape value}"
+        values.compact.map do |value|
+          if name.nil?
+            CGI.escape(value)
+          else
+            "#{CGI.escape name}=#{CGI.escape value}"
+          end
         end
       end.flatten.join("&")
     end
