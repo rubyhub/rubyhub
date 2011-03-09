@@ -4,27 +4,18 @@ namespace :blogs do
     require 'net/http'
 
     Blog.active.each do |blog|
-      url = URI.parse(blog.rss)
-      found = false
-      until found
-        host, port = url.host, url.port if url.host && url.port
-        req = Net::HTTP::Get.new(url.path||'')
-        res = Net::HTTP.start(host, port) {|http|  http.request(req) }
-        res.header['location'] ? url = URI.parse(res.header['location']) : found = true
-      end
-      if res.code != '200'
-        blog.status = :invalid
-        blog.save!
-      end
-      rss = Nokogiri::XML.parse(res.body,nil, 'UTF-8')
+      blog.update!
+    end
+  end
 
-      blog.title = rss.css('channel > title').text.strip
-      blog.url = rss.css('channel > link').text.strip
-      blog.save!
-
-      # create missing posts
-      rss.css('channel item').each do |item|
-        BlogPost.from_rss_item(blog, item)
+  task :actualize => :environment do
+    BlogPost.find_each do |post|
+      post.url = BlogPost.remove_utm_params(HttpHelper.expand_url(post.url))
+      if post.url_changed? && BlogPost.exists?(:url => post.url)
+        post.destroy
+      else
+        post.send(:check_if_interesting)
+        post.save!
       end
     end
   end

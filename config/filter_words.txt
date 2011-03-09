@@ -7,3 +7,7 @@ github
 bundler
 rspec
 sass
+kiev.rb
+kievrb
+capistrano
+sinatra

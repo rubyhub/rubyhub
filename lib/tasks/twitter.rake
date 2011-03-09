@@ -10,4 +10,11 @@ namespace :twitter do
       # do nothing, it's a regular Twitter issue.
     end
   end
+
+  task :check_if_interesting => :environment do
+    Tweet.find_each do |tweet|
+      tweet.send(:check_if_interesting)
+      tweet.save!
+    end
+  end
 end

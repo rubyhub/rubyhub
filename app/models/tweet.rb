@@ -1,3 +1,5 @@
+require 'http_helper'
+
 class Tweet < ActiveRecord::Base
   belongs_to :account, :class_name => 'TwitterAccount'
 
@@ -26,26 +28,12 @@ protected
     return true
   end
 
-  def follow_redirects(url, depth=0)
-    return url if depth==5
-    uri = URI.parse(url)
-    response = nil
-    Net::HTTP.start(uri.host, uri.port) do |http|
-      response = http.head(uri.path.blank? ? '/' : uri.path)
-    end
-    if response.code.to_s[0,1]=='3' # redirect
-      return follow_redirects(response['location'], depth+1)
-    else
-      return url
-    end
-  end
-
   def parse_text
     escaped_text = CGI.escapeHTML(text.gsub('&lt;','<').gsub('&gt;','>'))
     if self.interesting?
       self.html = escaped_text.gsub(ActionView::Helpers::TextHelper::AUTO_LINK_RE) do
         url = $&
-        final_url = follow_redirects(url)
+        final_url = HttpHelper.expand_url(url)
         begin
           host = URI.parse(final_url).host
         rescue

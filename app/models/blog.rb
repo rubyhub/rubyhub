@@ -1,3 +1,5 @@
+require 'http_helper'
+
 class Blog < ActiveRecord::Base
   enum_attr :status, %w(^pending active invalid)
 
@@ -15,5 +17,27 @@ class Blog < ActiveRecord::Base
   def favicon_url
     host = URI.parse(url).host rescue nil
     "http://www.google.com/s2/favicons?domain=#{host}"
+  end
+
+  def update!
+    response = HttpHelper.follow_redirects(self.rss, :return => :response)
+
+    if response.code != '200'
+      self.status = :invalid
+      self.save!
+    else
+      rss = Nokogiri::XML.parse(response.body, nil, 'UTF-8')
+
+      self.title = rss.css('channel > title').text.strip
+      self.url = rss.css('channel > link').text.strip
+      self.save!
+
+      puts self.inspect
+
+      # create missing posts
+      rss.css('channel item').each do |item|
+        BlogPost.from_rss_item(self, item)
+      end
+    end
   end
 end
