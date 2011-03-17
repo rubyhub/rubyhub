@@ -23,13 +23,16 @@ class JobOffer < ActiveRecord::Base
       :published_on => message.css('updated').text.strip.to_i.days.ago.to_date,
       :urls => message.css('sources > source > url').map(&:text).map(&:strip).join("\n")
     }
+
     cities = message.css('region').text.split(',').map{|r| City.find_by_title(r.strip)}.compact
     job_offer = JobOffer.find_by_joobleid(attrs[:joobleid]) || JobOffer.new
 
-    job_offer.update_attributes!(attrs)
-    job_offer.cities = cities
-
-    job_offer
+    if job_offer.update_attributes(attrs)
+      job_offer.cities = cities
+      return job_offer
+    else
+      return nil
+    end
   end
 
   def url
