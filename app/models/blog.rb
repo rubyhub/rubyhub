@@ -22,7 +22,7 @@ class Blog < ActiveRecord::Base
   def update!
     response = HttpHelper.follow_redirects(self.rss, :return => :response)
 
-    if response.code != '200'
+    if !response || (response.code != '200')
       self.status = :invalid
       self.save!
     else
@@ -31,8 +31,6 @@ class Blog < ActiveRecord::Base
       self.title = rss.css('channel > title').text.strip
       self.url = rss.css('channel > link').text.strip
       self.save!
-
-      puts self.inspect
 
       # create missing posts
       rss.css('channel item').each do |item|

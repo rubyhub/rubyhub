@@ -8,12 +8,15 @@ module HttpHelper
     response = nil
 
 
-
-    Net::HTTP.start(uri.host, uri.port) do |http|
-      response = http.send((return_type==:url ? :head : :get), uri.path.blank? ? '/' : uri.path)
+    begin
+      Net::HTTP.start(uri.host, uri.port) do |http|
+        response = http.send((return_type==:url ? :head : :get), uri.path.blank? ? '/' : uri.path)
+      end
+    rescue EOFError
+      response = nil
     end
 
-    if (response.code.to_s[0,1]=='3') && (depth<5) # redirect
+    if response && (response.code.to_s[0,1]=='3') && (depth<5) # redirect
       location = response['location']
       if location.starts_with? '/'
         location = "#{uri.scheme}://#{uri.host}:#{uri.port}#{location}"
