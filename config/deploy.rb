@@ -2,6 +2,7 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"                  # Load RVM's capistrano plugin.
 set :rvm_ruby_string, 'ree-1.8.7-2010.02@rubyhub'
+set :rvm_bin_path, '/usr/local/bin'
 
 # Bundler
 require 'bundler/capistrano'
