@@ -1,6 +1,10 @@
 require 'http_helper'
 
 class Tweet < ActiveRecord::Base
+
+  # http://daringfireball.net/2010/07/improved_regex_for_matching_urls
+  URL_RE = /(?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/
+
   belongs_to :account, :class_name => 'TwitterAccount'
 
   named_scope :interesting, where(:interesting => true)
@@ -31,7 +35,7 @@ protected
   def parse_text
     if self.interesting?
       escaped_text = CGI.escapeHTML(text.gsub('&lt;','<').gsub('&gt;','>'))
-      self.html = escaped_text.gsub(ActionView::Helpers::TextHelper::AUTO_LINK_RE) do
+      self.html = escaped_text.gsub(Tweet::URL_RE) do
         url = $&
         final_url = HttpHelper.expand_url(url)
         begin
