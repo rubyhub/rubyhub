@@ -6,14 +6,15 @@ module HttpHelper
 
     uri = URI.parse(url)
     response = nil
-
-
-    begin
-      Net::HTTP.start(uri.host, uri.port) do |http|
-        response = http.send((return_type==:url ? :head : :get), uri.path.blank? ? '/' : uri.path)
+    
+    unless uri.host.blank?
+      begin
+        Net::HTTP.start(uri.host, uri.port) do |http|
+          response = http.send((return_type==:url ? :head : :get), uri.path.blank? ? '/' : uri.path)
+        end
+      rescue EOFError, Net::HTTPBadResponse
+        response = nil
       end
-    rescue EOFError, Net::HTTPBadResponse
-      response = nil
     end
 
     if response && (response.code.to_s[0,1]=='3') && (depth<5) # redirect
