@@ -18,8 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-job_type :rake, "cd :path && vendor/cronic rake :task :output RAILS_ENV=:environment"
-job_type :runner, "cd :path && vendor/cronic ruby script/runner -e :environment :task :output"
+job_type :rake, "cd :path && cronograph bundle exec rake :task :output RAILS_ENV=:environment"
+job_type :runner, "cd :path && cronograph bundle exec ruby script/runner -e :environment :task :output"
 
 every 5.minutes do
   rake 'twitter:collect_tweets'
