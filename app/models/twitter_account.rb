@@ -8,7 +8,7 @@ class TwitterAccount < ActiveRecord::Base
   validates_format_of :name, :with => /^[A-Za-z0-9_]+$/
   validates_uniqueness_of :name
 
-  named_scope :active, where(:status => :active)
+  scope :active, where(:status => :active)
 
   attr_protected :twitterid, :avatar_url, :status, :user_id
 

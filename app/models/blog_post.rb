@@ -10,8 +10,8 @@ class BlogPost < ActiveRecord::Base
   validates_presence_of :blog_id
   validates_uniqueness_of :url, :scope => :blog_id
   
-  named_scope :interesting, where(:interesting => true)
-  named_scope :mainpage, interesting.order('published_at DESC').includes(:blog).limit(20)
+  scope :interesting, where(:interesting => true)
+  scope :mainpage, interesting.order('published_at DESC').includes(:blog).limit(20)
   
   before_create :check_if_interesting
 
@@ -56,7 +56,8 @@ class BlogPost < ActiveRecord::Base
 
 protected
   def check_if_interesting
-    self.interesting = Tweet.filter_words.find_index{|word| (title+' '+text).include? word}!=nil
+    @@interesting_filter ||= InterestingFilter.new
+    self.interesting = @@interesting_filter.interesting?(self.text)
     return true
   end
 end

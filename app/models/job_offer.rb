@@ -5,8 +5,8 @@ class JobOffer < ActiveRecord::Base
   validates_presence_of :urls
   validates :joobleid, :presence => true, :uniqueness => true
       
-  named_scope :interesting, where(:interesting => true)
-  named_scope :mainpage, interesting.order('published_on DESC').limit(20)
+  scope :interesting, where(:interesting => true)
+  scope :mainpage, interesting.order('published_on DESC').limit(20)
   
   before_create :check_if_interesting
 
