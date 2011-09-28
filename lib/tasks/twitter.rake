@@ -6,7 +6,7 @@ namespace :twitter do
       client = TwitterClient.new
       client.sync_friends_with_accounts
       client.get_tweets
-    rescue Twitter::BadGateway, Twitter::ServiceUnavailable, Net::HTTPError
+    rescue Twitter::BadGateway, Twitter::ServiceUnavailable, Twitter::InternalServerError, Net::HTTPError, OpenSSL::SSL::SSLError
       # do nothing, it's a regular Twitter issue.
     end
   end
