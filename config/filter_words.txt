@@ -11,3 +11,8 @@ kiev.rb
 kievrb
 capistrano
 sinatra
+руби
+рельсы
+рельса
+rubyc
+rubyshift
