@@ -1,5 +1,5 @@
 class InterestingFilter
-  def initialize(words)
+  def initialize(words=nil)
     @filter_words = words || default_filter_words 
   end
 
