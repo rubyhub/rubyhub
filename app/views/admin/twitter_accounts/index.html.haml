@@ -1,4 +1,4 @@
-%h2 Twitter accounts
+%h2=title 'Twitter accounts'
 
 =form_for [:admin, TwitterAccount.new] do |f|
   =f.text_field :name
@@ -6,11 +6,23 @@
 
 %br
 
-%ul
+%table.accounts
   -@twitter_accounts.each do |account|
-    %li
-      =link_to account.name, account.url
-      -if account.status == :active
-        Active
-      -else
-        =link_to 'Approve', approve_admin_twitter_account_url(account)
+    %tr
+      %td
+        =link_to account.name, account.url
+      %td
+        =account.status.to_s.capitalize
+      %td
+        -if account.active?
+          =form_for [:admin, account] do |f|
+            =f.hidden_field :status, :value => 'disabled'
+            =submit_tag 'Disable'
+        -elsif account.pending?
+          =form_for [:admin, account] do |f|
+            =f.hidden_field :status, :value => 'active'
+            =submit_tag 'Approve'
+        -elsif account.disabled?
+          =form_for [:admin, account] do |f|
+            =f.hidden_field :status, :value => 'active'
+            =submit_tag 'Enable'

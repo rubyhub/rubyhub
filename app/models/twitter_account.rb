@@ -9,8 +9,10 @@ class TwitterAccount < ActiveRecord::Base
   validates_uniqueness_of :name
 
   scope :active, where(:status => :active)
+  scope :admin, order('name ASC')
 
   attr_protected :twitterid, :avatar_url, :status, :user_id
+  attr_protected :twitterid, :avatar_url, :user_id, :as => :admin
 
   def url
     "http://twitter.com/#{name}"

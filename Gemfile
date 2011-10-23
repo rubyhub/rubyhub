@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '>=3'
+gem 'rails', '>=3.1'
 gem 'mysql2'
 
 gem 'capistrano'
@@ -12,12 +12,12 @@ gem 'jammit'
 gem 'compass'
 
 gem 'authlogic'
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'will_paginate'
 gem 'enumerated_attribute'
 gem 'formtastic'
 gem 'meta-tags', :require => 'meta_tags'
-gem 'hoptoad_notifier'
-gem "russian", :git => 'git://github.com/yaroslav/russian.git'
+gem 'airbrake'
+gem "russian"
 gem 'twitter'
 gem 'whenever'
 gem 'unobtrusive_flash'
