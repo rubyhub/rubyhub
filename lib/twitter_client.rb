@@ -43,7 +43,11 @@ class TwitterClient
 
     # unfollow accounts that aren't in our active accounts
     (friend_ids - active_accounts.map(&:uid)).each do |userid| 
-      Twitter.friendship_destroy(userid) 
+      begin
+        Twitter.friendship_destroy(userid) 
+      rescue Twitter::NotFound
+        # cool! nothing to destroy then
+      end
     end
   end
 
