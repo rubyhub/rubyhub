@@ -48,7 +48,7 @@ namespace :deploy do
   end
   
   task :jammit do
-    run "cd #{release_path} && rake jammit:package RAILS_ENV=production"
+    run "cd #{release_path} && bundle exec rake jammit:package RAILS_ENV=production"
   end
 end
 
@@ -56,5 +56,5 @@ after "deploy:update_code", "deploy:update_symlinks"
 after "deploy:update_code", "deploy:trust_rvmrc" 
 after "deploy:update_code", "deploy:jammit"
 
-        require 'config/boot'
-        require 'airbrake/capistrano'
+require 'config/boot'
+require 'airbrake/capistrano'
