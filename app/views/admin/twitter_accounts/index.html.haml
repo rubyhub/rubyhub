@@ -1,5 +1,11 @@
 %h2 Twitter accounts
 
+=form_for [:admin, TwitterAccount.new] do |f|
+  =f.text_field :name
+  =submit_tag 'Create'
+
+%br
+
 %ul
   -@twitter_accounts.each do |account|
     %li
