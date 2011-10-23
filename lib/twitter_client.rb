@@ -3,7 +3,7 @@ require 'yaml'
 
 class TwitterClient
   def initialize
-    credentials = YAML::load_file("#{RAILS_ROOT}/config/keys.yml")['twitter'].symbolize_keys!
+    credentials = YAML::load_file("#{Rails.root}/config/keys.yml")['twitter'].symbolize_keys!
     Twitter.configure do |config|
       config.consumer_key = credentials[:consumer_key]
       config.consumer_secret = credentials[:consumer_secret]
