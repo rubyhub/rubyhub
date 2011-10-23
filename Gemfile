@@ -1,5 +1,7 @@
 source :rubygems
 
+gem 'rack'
+
 gem 'rails', '>=3.1'
 gem 'mysql2'
 
