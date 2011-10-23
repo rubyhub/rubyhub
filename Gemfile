@@ -6,7 +6,6 @@ gem 'mysql2'
 gem 'capistrano'
 
 gem 'haml', '>=3'
-gem 'haml_rails'
 gem 'jammit'
 
 gem 'compass'
@@ -31,4 +30,8 @@ group :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'capybara'
+end
+
+group :development do
+  gem 'haml_rails'
 end
