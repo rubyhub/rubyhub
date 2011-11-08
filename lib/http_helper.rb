@@ -12,7 +12,7 @@ module HttpHelper
         Net::HTTP.start(uri.host, uri.port) do |http|
           response = http.send((return_type==:url ? :head : :get), uri.path.blank? ? '/' : uri.path)
         end
-      rescue EOFError, Net::HTTPBadResponse, Errno::ETIMEDOUT
+      rescue SocketError, EOFError, Net::HTTPBadResponse, Errno::ETIMEDOUT
         response = nil
       end
     end
