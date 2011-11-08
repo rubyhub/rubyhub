@@ -1,1 +1,1 @@
-rvm gemset use rubyhub
+rvm use ree@rubyhub
