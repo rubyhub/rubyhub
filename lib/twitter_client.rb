@@ -64,7 +64,11 @@ class TwitterClient
       next if account.nil?
       tweet = account.tweets.create!(:published_at => Time.parse(tweet["created_at"]), :text => tweet["text"], :twitterid => tweet["id"])
       if tweet.interesting?
-        Twitter.retweet(tweet.twitterid)
+        begin
+          Twitter.retweet(tweet.twitterid)
+        rescue Twitter::Forbidden
+          Rails.logger.debug "Forbidden to retweet #{tweet.twitterid}"
+        end
       end
     end
   end
