@@ -25,7 +25,7 @@ every 5.minutes do
   rake 'twitter:collect_tweets'
 end
 
-every 1.hour do
-  rake 'blogs:update'
-  rake 'jobs:jooble'
-end
+#every 1.hour do
+#  rake 'blogs:update'
+#  rake 'jobs:jooble'
+#end
