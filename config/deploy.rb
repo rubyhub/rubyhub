@@ -15,7 +15,7 @@ set :application, 'rubyhub'
 set :deploy_to, '/home/leonid/www/rubyhub'
 set :repository, 'git://github.com/rubyhub/rubyhub.git'
 set :scm, :git
-set :branch, 'master'
+set :branch, 'closed'
 
 set :deploy_via, :remote_cache
 
