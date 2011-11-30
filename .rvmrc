@@ -1,1 +1,1 @@
-rvm use ree@rubyhub
+rvm use ree@rubyhub >/dev/null
