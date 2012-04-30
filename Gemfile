@@ -5,6 +5,7 @@ gem 'rack'
 gem 'rails', '>=3.1'
 gem 'mysql2'
 
+gem 'rvm-capistrano'
 gem 'capistrano'
 
 gem 'haml', '>=3'
