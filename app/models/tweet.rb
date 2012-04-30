@@ -31,13 +31,13 @@ protected
   def parse_text
     if self.interesting?
       escaped_text = CGI.escapeHTML(text.gsub('&lt;','<').gsub('&gt;','>'))
-      self.html = escaped_text.gsub(Tweet::URL_RE) do
-        url = $&
-        final_url = HttpHelper.expand_url(url)
-        host = URI.parse(final_url).host rescue nil
-        host ||= final_url # case in question: balans:zagal'nyi recognized as an URL 
-        "<a href=\"#{CGI.escapeHTML(final_url)}\" target=\"_blank\">#{CGI.escapeHTML(host)}»</a>"
-      end
+#      self.html = escaped_text.gsub(Tweet::URL_RE) do
+#        url = $&
+#        final_url = HttpHelper.expand_url(url)
+#        host = URI.parse(final_url).host rescue nil
+#        host ||= final_url # case in question: balans:zagal'nyi recognized as an URL 
+#        "<a href=\"#{CGI.escapeHTML(final_url)}\" target=\"_blank\">#{CGI.escapeHTML(host)}»</a>"
+#      end
     else
       self.html=CGI.escapeHTML(self.text)
     end
